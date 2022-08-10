@@ -14,17 +14,15 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
 	size_t	len_s1;
 	size_t	len_s2;
 	char	*new_string;
 
 	if (!s1 || !s2)
 		return (NULL);
-	i = 0;
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
-	new_string = (char *)malloc((len_s1 + len_s2 + 1) * sizeof(char));
+	new_string = malloc(len_s1 + len_s2 + 1);
 	if (!new_string)
 		return (NULL);
 	ft_strlcpy(new_string, s1, len_s1 + 1);

@@ -6,7 +6,7 @@
 /*   By: gusousa <gusousa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 09:02:16 by gusousa           #+#    #+#             */
-/*   Updated: 2022/05/30 17:10:30 by gusousa          ###   ########.fr       */
+/*   Updated: 2022/11/17 08:43:22 by gusousa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	qtd_words = count_words(s, c);
-	str_splitted = (char **)malloc((qtd_words + 1) * sizeof(char *));
+	str_splitted = malloc((qtd_words + 1) * sizeof(char *));
 	if (!str_splitted)
 		return (NULL);
 	return (split(str_splitted, s, c));

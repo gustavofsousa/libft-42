@@ -3,10 +3,13 @@ NAME = libft.a
 ##################	Compiler	##################
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
-RM = rm -f
+RM = rm -rf
 
-##################	Source		##################
-FILES =	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c		\
+###	Directories	####
+OBJDIR	:=	obj/
+
+##################	Sources & OBJ	##################
+SRC =	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c		\
 		ft_strlen.c ft_strlcpy.c ft_strlcat.c ft_strchr.c ft_strrchr.c			\
 		ft_strnstr.c ft_strncmp.c ft_striteri.c									\
 		ft_strjoin.c ft_strtrim.c ft_split.c ft_strmapi.c ft_strdup.c			\
@@ -17,24 +20,27 @@ FILES =	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c		\
 		ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c					\
 		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c
 
-##################	Objects		##################
-OBJECTS = $(FILES:.c=.o)
+OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
 ################## ft_printf		##################
 
 ##################	Get_next_line	##################
 
 ##################	Commands	##################
-all: $(NAME)
 
-$(NAME): $(OBJECTS)
-	ar -rcs $(NAME) $(OBJECTS)
+all: $(OBJDIR) $(NAME)
 
-$(OBJECTS): $(FILES)
-	$(CC) $(CFLAGS) -c $(FILES)
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+
+$(NAME): $(OBJ)
+	ar -rcs $(NAME) $(OBJ)
+
+$(OBJDIR)%.o : $(SRCDIR)%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJECTS)
+	$(RM) $(OBJDIR)
 
 fclean: clean
 	$(RM) $(NAME)

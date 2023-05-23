@@ -6,7 +6,7 @@
 /*   By: gusousa <gusousa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:19:47 by gusousa           #+#    #+#             */
-/*   Updated: 2022/10/11 14:20:02 by gusousa          ###   ########.fr       */
+/*   Updated: 2023/05/23 10:21:15 by gusousa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,17 @@ t_list		*ft_lstlast(t_list *lst);
 void		ft_lstadd_back(t_list **lst, t_list *new_node);
 void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
+
+/***********************	GET_NEXT_LINE	*****************************/
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+char	*get_nl(int fd);
+void	move_remains(char *str, int pos);
+int		ft_strlen_gnl(char *str, int *end_flag);
+char	*ft_calloc_gnl(size_t n_elements, size_t size);
+char	*ft_strdup_gnl(char *src, int len_stash);
+void	ft_strlcpy_gnl(char *dst, char *src, int size);
 
 #endif
